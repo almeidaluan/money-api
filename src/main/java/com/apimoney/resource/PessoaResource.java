@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,7 @@ public class PessoaResource {
 	private PessoaRepository repository;
 
 	@GetMapping
+	@Cacheable(value = "listaPessoas")
 	public List<Pessoa> listaPessoas() {
 		List<Pessoa> listaDePessoas = repository.findAll();
 		return listaDePessoas;
