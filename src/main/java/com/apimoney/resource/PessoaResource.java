@@ -1,6 +1,6 @@
 package com.apimoney.resource;
 
-import java.net.URI;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,9 +41,13 @@ public class PessoaResource {
 
 	@GetMapping
 	@Cacheable(value = "listaPessoas")
-	public List<Pessoa> listaPessoas() {
+	public ResponseEntity<List<Pessoa>> listaPessoas() {
 		List<Pessoa> listaDePessoas = repository.findAll();
-		return listaDePessoas;
+		if (listaDePessoas.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}else {
+			return ResponseEntity.ok(listaDePessoas);			
+		}
 	}
 
 	/**
@@ -92,6 +96,9 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoaSalva.get());
 	}
 
+	/*
+	 * Atualiza um atributo especifico de um objeto.
+	 */
 	@PatchMapping("/{codigo}/ativo")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizaAtivo(@PathVariable long codigo, @RequestBody Boolean ativo) {
