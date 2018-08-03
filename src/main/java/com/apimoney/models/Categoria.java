@@ -21,6 +21,7 @@ public class Categoria implements Serializable {
 	@NotNull
 	@Size(min = 3)
 	private String nome;
+	
 
 	public String getNome() {
 		return nome;
@@ -33,4 +34,10 @@ public class Categoria implements Serializable {
 	public Long getCodigo() {
 		return codigo;
 	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+	
+	
 }
