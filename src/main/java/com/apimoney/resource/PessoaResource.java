@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.apimoney.event.RecursoCriadoEvent;
 import com.apimoney.models.Pessoa;
 import com.apimoney.repository.PessoaRepository;
 
@@ -33,6 +35,9 @@ public class PessoaResource {
 
 	@Autowired
 	private PessoaRepository repository;
+	
+	@Autowired
+	private ApplicationEventPublisher publisher;
 
 	@GetMapping
 	@Cacheable(value = "listaPessoas")
@@ -47,16 +52,13 @@ public class PessoaResource {
 	 * @return
 	 */
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Pessoa> salvaPessoa(@RequestBody Pessoa pessoa, HttpServletResponse response) {
-
+		
 		Pessoa pessoaSalva = repository.save(pessoa);
-
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/codigo")
-				.buildAndExpand(pessoaSalva.getCodigo()).toUri();
-		response.setHeader("Location", uri.toASCIIString());
-
-		return ResponseEntity.created(uri).body(pessoaSalva);
+		
+		publisher.publishEvent(new RecursoCriadoEvent(this, response,pessoa.getCodigo()));
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
 	}
 
 	@GetMapping("/{codigo}")
