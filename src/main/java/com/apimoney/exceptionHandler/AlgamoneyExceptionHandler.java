@@ -30,7 +30,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 /**
  * ControllerAdvice olha pra toda aplicacao / tem que passar a mensagem no
- * properties mensagem.invalida=Mensagem inv\u00E1lida pra funcionar lembraar
+ * properties mensagem.invalida=Mensagem inv\u00E1lida para funcionar lembrar
  * LocaleContextHolder.getLocale() config no application
  * 
  * @author luan
@@ -65,7 +65,7 @@ public class AlgamoneyExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 
 	/**
-	 * Exceção crida para tratar a segunda tentativa de deletar um recurso depois
+	 * Exceção criada para tratar a segunda tentativa de deletar um recurso depois
 	 * dele ja ter sido deletado // NoSuch voce pega no console na tentativa de
 	 * deletar novamente lança a Exception // lembre-se de nao ter nada no body do
 	 * postman para não causar erro e lançar a exception tratada
