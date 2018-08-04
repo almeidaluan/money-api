@@ -19,6 +19,7 @@ import com.apimoney.event.RecursoCriadoEvent;
 import com.apimoney.models.Lancamento;
 import com.apimoney.repository.LancamentoRepository;
 import com.apimoney.service.LancamentoService;
+import com.apimoney.vo.LancamentoVO;
 
 @RestController
 @RequestMapping("/lancamentos")
@@ -34,8 +35,8 @@ public class LancamentoResource {
 	private LancamentoService service;
 
 	@GetMapping
-	public List<Lancamento> listaLancamentos() {
-		return repository.findAll();
+	public List<Lancamento> listaLancamentos(LancamentoVO lancamentoVO) {
+		return repository.filtra(lancamentoVO);
 	}
 
 	@GetMapping("/{codigo}")
