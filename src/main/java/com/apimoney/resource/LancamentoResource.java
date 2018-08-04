@@ -38,7 +38,8 @@ public class LancamentoResource {
 	private LancamentoService service;
 
 	/**
-	 * Retorna tudo caso não passe nada na QueryString size=3&page=1
+	 * Retorna tudo caso não passe nada na QueryString paginação
+	 * lancamentos?size=3&page=1
 	 * 
 	 * @param lancamentoVO
 	 * @return

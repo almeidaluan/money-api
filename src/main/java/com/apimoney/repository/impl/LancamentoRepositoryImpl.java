@@ -22,7 +22,6 @@ import com.apimoney.repository.LancamentoRepositoryQuery;
 import com.apimoney.vo.LancamentoVO;
 
 public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
-
 	@PersistenceContext
 	private EntityManager manager;
 

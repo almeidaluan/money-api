@@ -7,6 +7,6 @@ import com.apimoney.models.Lancamento;
 import com.apimoney.vo.LancamentoVO;
 
 public interface LancamentoRepositoryQuery {
-
 	public Page<Lancamento> filtraPorDataDescricao(LancamentoVO lancamentoVO, Pageable pageable);
+
 }
