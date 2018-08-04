@@ -7,5 +7,5 @@ import com.apimoney.vo.LancamentoVO;
 
 public interface LancamentoRepositoryQuery {
 
-	public List<Lancamento> filtra(LancamentoVO lancamentoVO);
+	public List<Lancamento> filtraPorDataDescricao(LancamentoVO lancamentoVO);
 }

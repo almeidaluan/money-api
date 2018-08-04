@@ -34,9 +34,15 @@ public class LancamentoResource {
 	@Autowired
 	private LancamentoService service;
 
+	/**
+	 * Retorna tudo caso não passe nada na QueryString
+	 * 
+	 * @param lancamentoVO
+	 * @return
+	 */
 	@GetMapping
 	public List<Lancamento> listaLancamentos(LancamentoVO lancamentoVO) {
-		return repository.filtra(lancamentoVO);
+		return repository.filtraPorDataDescricao(lancamentoVO);
 	}
 
 	@GetMapping("/{codigo}")

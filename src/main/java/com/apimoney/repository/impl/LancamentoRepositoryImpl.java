@@ -24,7 +24,7 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 	private EntityManager manager;
 
 	@Override
-	public List<Lancamento> filtra(LancamentoVO lancamentoVO) {
+	public List<Lancamento> filtraPorDataDescricao(LancamentoVO lancamentoVO) {
 
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<Lancamento> criteria = builder.createQuery(Lancamento.class);
