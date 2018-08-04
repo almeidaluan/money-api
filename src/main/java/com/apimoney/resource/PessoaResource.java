@@ -8,7 +8,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -23,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.apimoney.event.RecursoCriadoEvent;
 import com.apimoney.models.Pessoa;
 import com.apimoney.repository.PessoaRepository;
+import com.apimoney.service.PessoaService;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -34,18 +33,21 @@ public class PessoaResource {
 
 	@Autowired
 	private PessoaRepository repository;
-	
+
 	@Autowired
 	private ApplicationEventPublisher publisher;
 
+	@Autowired
+	private PessoaService service;
+
 	@GetMapping
-	@Cacheable(value = "listaPessoas")
+	// @Cacheable(value = "listaPessoas")
 	public ResponseEntity<List<Pessoa>> listaPessoas() {
 		List<Pessoa> listaDePessoas = repository.findAll();
 		if (listaDePessoas.isEmpty()) {
 			return ResponseEntity.notFound().build();
-		}else {
-			return ResponseEntity.ok(listaDePessoas);			
+		} else {
+			return ResponseEntity.ok(listaDePessoas);
 		}
 	}
 
@@ -56,21 +58,18 @@ public class PessoaResource {
 	 */
 	@PostMapping
 	public ResponseEntity<Pessoa> salvaPessoa(@RequestBody Pessoa pessoa, HttpServletResponse response) {
-		
+
 		Pessoa pessoaSalva = repository.save(pessoa);
-		
-		publisher.publishEvent(new RecursoCriadoEvent(this, response,pessoa.getCodigo()));
-		
+
+		publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoa.getCodigo()));
+
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
 	}
 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Pessoa> buscaPeloCodigo(@PathVariable long codigo) {
-		Optional<Pessoa> pessoa = repository.findById(codigo);
-		if (pessoa != null)
-			return ResponseEntity.ok(pessoa.get());
-		else
-			return ResponseEntity.notFound().build();
+		Pessoa pessoa = service.buscaPeloCodigo(codigo);
+		return pessoa != null ? ResponseEntity.ok(pessoa) : ResponseEntity.notFound().build();
 	}
 
 	/**
@@ -101,8 +100,7 @@ public class PessoaResource {
 	@PatchMapping("/{codigo}/ativo")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizaAtivo(@PathVariable long codigo, @RequestBody Boolean ativo) {
-		Optional<Pessoa> pessoaSalva = repository.findById(codigo);
-		pessoaSalva.get().setAtivo(ativo);
-		repository.save(pessoaSalva.get());
+		service.atualizaPropriedadeAtivo(codigo, ativo);
+
 	}
 }
