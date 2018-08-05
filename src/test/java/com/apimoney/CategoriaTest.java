@@ -13,6 +13,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
+/**
+ * Classe de Testes categoria
+ * 
+ * @author luan
+ *
+ */
 @RunWith(JUnitPlatform.class)
 public class CategoriaTest {
 

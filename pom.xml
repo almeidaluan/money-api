@@ -110,7 +110,7 @@
 		</dependency>
 
 		<!-- -->
-	<!-- Dependencias para utilizar junit 5 -->
+	<!-- Dependencias para utilizar o novo Junit 5.0 -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
