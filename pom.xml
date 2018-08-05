@@ -93,24 +93,46 @@
 			<version>4.1.0.RELEASE</version>
 		</dependency>
 		<!-- fim Cache -->
-		
-		<!-- Melhor visualização de Exception -->
-		 <dependency>
-		 	<groupId>org.apache.commons</groupId>
-		 	<artifactId>commons-lang3</artifactId>
-		 	<version>3.4</version>
-		 </dependency>
-		 
-		 <!--  -->
-		 
-		 <!-- Trabalhando com METAMODEL -->
-		 <dependency>
-		 	<groupId>org.hibernate</groupId>
-		 	<artifactId>hibernate-jpamodelgen</artifactId>
-		 </dependency>
-		 
-		 <!--  -->
 
+		<!-- Melhor visualização de Exception -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+		<!-- -->
+
+		<!-- Trabalhando com METAMODEL -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+		</dependency>
+
+		<!-- -->
+	<!-- Dependencias para utilizar junit 5 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.0.0-M2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.0.0-M2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>1.0.0-M2</version>
+			<scope>test</scope>
+		</dependency>
+	<!-- fim dependencias junit 5 -->
+	
 	</dependencies>
 
 	<build>
