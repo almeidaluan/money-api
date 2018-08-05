@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 /**
  * Classe de Testes categoria
  * 
- * @author luan
+ * @author luan Almeida
  *
  */
 @RunWith(JUnitPlatform.class)
