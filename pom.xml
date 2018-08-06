@@ -110,7 +110,7 @@
 		</dependency>
 
 		<!-- -->
-	<!-- Dependencias para utilizar o novo Junit 5.0 ! -->
+		<!-- Dependencias para utilizar o novo Junit 5.0 ! -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
@@ -131,8 +131,13 @@
 			<version>1.0.0-M2</version>
 			<scope>test</scope>
 		</dependency>
-	<!-- fim dependencias junit 5 -->
-	
+		<!-- fim dependencias junit 5 -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			</dependency>
+
 	</dependencies>
 
 	<build>

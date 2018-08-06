@@ -1,7 +1,7 @@
 package com.apimoney;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import org.junit.jupiter.api.AfterAll;
@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 
 /**
  * Classe de Testes categoria
@@ -20,6 +21,7 @@ import org.junit.runner.RunWith;
  *
  */
 @RunWith(JUnitPlatform.class)
+@SpringBootTest
 public class CategoriaTest {
 
 	@BeforeAll
@@ -61,4 +63,5 @@ public class CategoriaTest {
 	static void liberarRecursosExternos() {
 		System.out.println("Liberando os recursos externos...");
 	}
+
 }
