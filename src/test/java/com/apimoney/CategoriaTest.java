@@ -1,18 +1,10 @@
 package com.apimoney;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * Classe de Testes categoria
@@ -20,48 +12,14 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author luan Almeida
  *
  */
-@RunWith(JUnitPlatform.class)
+@ExtendWith(SpringExtension.class)
+@DisplayName("Testes da classe Categoria")
 @SpringBootTest
 public class CategoriaTest {
 
-	@BeforeAll
-	static void InicializaRecursosExternos() {
-
-		System.out.println("Inicializando Recursos externos");
-	}
-
-	@BeforeEach
-	void inicializarObjetosMock() {
-		System.out.println("Inicializando objetos mock...");
-	}
-
 	@Test
-	void algumTeste() {
-		System.out.println("Executando algum teste...");
-		assertTrue(true);
+	@DisplayName("Teste do fodase")
+	void fodase() {
+		System.out.println("Teste do fodase");
 	}
-
-	@Test
-	void outroTeste() {
-		assumeTrue(true);
-		System.out.println("Executando outro teste...");
-		assertNotEquals(1, 42, "Porque estes valores não são iguais?");
-	}
-
-	@Test
-	@Disabled
-	void disabilitarTeste() {
-		System.exit(1);
-	}
-
-	@AfterEach
-	void parando() {
-		System.out.println("Parando...");
-	}
-
-	@AfterAll
-	static void liberarRecursosExternos() {
-		System.out.println("Liberando os recursos externos...");
-	}
-
 }
