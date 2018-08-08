@@ -22,6 +22,22 @@ public class Categoria implements Serializable {
 	@Size(min = 3)
 	private String nome;
 	
+	
+	
+
+	public Categoria( @NotNull @Size(min = 3) String nome) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+	}
+	
+	
+
+	public Categoria() {
+		super();
+	}
+
+
 
 	public String getNome() {
 		return nome;
