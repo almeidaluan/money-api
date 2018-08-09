@@ -72,12 +72,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
 		<!-- Faz o hibernate entender o LocalDate do Java8 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-java8</artifactId>
 		</dependency>
-		
+
+		<!-- fim localdate java 8 -->
+
 		<!-- Cache -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -88,7 +91,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			
+
 		</dependency>
 		<!-- fim Cache -->
 
@@ -98,7 +101,7 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 
-		<!-- -->
+		<!-- fim exception -->
 
 		<!-- Trabalhando com METAMODEL -->
 		<dependency>
@@ -106,19 +109,20 @@
 			<artifactId>hibernate-jpamodelgen</artifactId>
 		</dependency>
 
-		<!-- -->
+		<!-- fim dependencia METAMODEL -->
+
 		<!-- Dependencias para utilizar o novo Junit 5.0 ! -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			
+
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			
+
 			<scope>test</scope>
 		</dependency>
 
@@ -130,10 +134,23 @@
 		</dependency>
 		<!-- fim dependencias junit 5 -->
 
+		<!-- Spring Security default -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-			</dependency>
+		</dependency>
+		<!-- fim spring security -->
+
+
+		<!-- spring framework security OAuth 2 -->
+
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.0.7.RELEASE</version>
+		</dependency>
+
+		<!-- fim OAuth2 -->
 
 	</dependencies>
 
