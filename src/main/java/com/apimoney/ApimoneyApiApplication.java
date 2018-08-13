@@ -2,10 +2,14 @@ package com.apimoney;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 
 @SpringBootApplication
 @EnableCaching
+@EnableConfigurationProperties
+@EnableGlobalAuthentication
 public class ApimoneyApiApplication {
 
 	public static void main(String[] args) {
