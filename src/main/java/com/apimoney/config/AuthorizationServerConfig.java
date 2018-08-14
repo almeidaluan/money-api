@@ -1,9 +1,11 @@
 package com.apimoney.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -15,8 +17,19 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
+	/**
+	 * Para Resolver o problema do Authentication Manager teve que ser crido dess
+	 * forma
+	 */
 	@Autowired
+	@Qualifier("authenticationManagerBean")
 	private AuthenticationManager authenticationManager;
+
+	// @Override
+	// public void configure(AuthorizationServerSecurityConfigurer oauthServer)
+	// throws Exception {
+	// oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+	// }
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -26,12 +39,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.tokenStore(tokenStore()).authenticationManager(this.authenticationManager);
+		endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager);
 	}
 
 	@Bean
 	public TokenStore tokenStore() {
 		return new InMemoryTokenStore();
+	}
+
+	@SuppressWarnings("deprecation")
+	@Bean
+	public static NoOpPasswordEncoder passwordEncoder() {
+		return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
 	}
 
 }
