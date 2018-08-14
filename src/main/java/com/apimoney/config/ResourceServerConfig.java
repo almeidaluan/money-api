@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 /**
  * Classe para configuração do spring security em memoria para fazer auth basic
  * na api
- * 
+ *
  * @author luan
  *
  */
