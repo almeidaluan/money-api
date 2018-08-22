@@ -25,12 +25,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Qualifier("authenticationManagerBean")
 	private AuthenticationManager authenticationManager;
 
-	// @Override
-	// public void configure(AuthorizationServerSecurityConfigurer oauthServer)
-	// throws Exception {
-	// oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
-	// }
-
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("angular").secret("@ngul@r0").scopes("read", "write")
