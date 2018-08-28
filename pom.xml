@@ -152,6 +152,15 @@
 
 		<!-- fim OAuth2 -->
 
+
+		<!-- spring framework security jwt -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			 <version>1.0.4.RELEASE</version>
+		</dependency>
+
+		<!-- fim jwt -->
 	</dependencies>
 
 	<build>

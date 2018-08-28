@@ -29,11 +29,6 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	// @Override
-	// public void configure(ResourceServerSecurityConfigurer resources) throws
-	// Exception {
-	// resources.stateless(true);
-	// }
 
 	@SuppressWarnings("deprecation")
 	@Bean
